@@ -1,5 +1,6 @@
 package me.sonofsoil.code.algorithm;
 
+import com.google.common.collect.ImmutableList;
 import me.sonofsoil.code.ds.ArrayIndexDeque;
 
 import java.util.Arrays;
@@ -24,7 +25,8 @@ public class MaxStableSubarrayFinder {
             return inputArray;
         }
 
-        List<Integer> inList = Arrays.stream(inputArray).boxed().collect(Collectors.toList());
+        ImmutableList<Integer> inList = ImmutableList.copyOf(
+                Arrays.stream(inputArray).boxed().collect(Collectors.toList()));
         // create minDeque
         final ArrayIndexDeque<Integer> minDeque = ArrayIndexDeque.createMinArrayIndexDeque(inList);
         // create maxDequeue

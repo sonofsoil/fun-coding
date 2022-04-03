@@ -1,5 +1,7 @@
 package me.sonofsoil.code.ds;
 
+import com.google.common.collect.ImmutableList;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
@@ -13,11 +15,11 @@ import java.util.function.BiFunction;
  * @param <T>
  */
 public class ArrayIndexDeque<T extends Comparable> {
-    private final List<T> inputList;
+    private final ImmutableList<T> inputList;
     private final Deque<Integer> deque;
     private final BiFunction<Comparable<T>, T, Boolean> comp;
 
-    private ArrayIndexDeque(List<T> inList,
+    private ArrayIndexDeque(ImmutableList<T> inList,
                             BiFunction<Comparable<T>, T, Boolean> comp) {
         this.inputList = inList;
         this.comp = comp;
@@ -34,7 +36,7 @@ public class ArrayIndexDeque<T extends Comparable> {
      * @return
      */
     public static <T extends Comparable> ArrayIndexDeque<T>
-    createMinArrayIndexDeque(List<T> inList) {
+    createMinArrayIndexDeque(ImmutableList<T> inList) {
         return new ArrayIndexDeque<T>(
                 inList,
                 new BiFunction<Comparable<T>, T, Boolean>() {
@@ -55,7 +57,7 @@ public class ArrayIndexDeque<T extends Comparable> {
      * @return
      */
     public static <T extends Comparable> ArrayIndexDeque<T>
-    createMaxArrayIndexDeque(List<T> inList) {
+    createMaxArrayIndexDeque(ImmutableList<T> inList) {
         return new ArrayIndexDeque<T>(
                 inList,
                 new BiFunction<Comparable<T>, T, Boolean>() {

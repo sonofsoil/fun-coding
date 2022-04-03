@@ -1,5 +1,6 @@
 package me.sonofsoil.code.algorithm;
 
+import com.google.common.collect.ImmutableList;
 import me.sonofsoil.code.ds.ArrayIndexDeque;
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class SlidingWindowMaxFinder {
             throw new IllegalArgumentException(" window " + window + "must be within valid index range");
         }
 
-        final List<Integer> inList = Arrays.stream(input).boxed().collect(Collectors.toList());
+        final ImmutableList<Integer> inList = ImmutableList.copyOf(
+                Arrays.stream(input).boxed().collect(Collectors.toList()));
         // init maxDequeue
         final ArrayIndexDeque<Integer> maxDequeue = ArrayIndexDeque.createMaxArrayIndexDeque(inList);
         // init window pointer
